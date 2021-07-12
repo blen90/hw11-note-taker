@@ -37,3 +37,14 @@ app.get('*', (req, res) => res.sendFile(path.join(__dirname, './public/index.htm
 
 //Get note from db file
 
+app.post('/api/notes', (req, res) => {
+    const existingNote = JSON.parse(fs.readFileSync ("./dib/db.json"));
+    const newNote = req.body;
+    newNote.id = uuidv4();
+    existingNote.push(newNote);
+    fs.writeFileSync("./db/db.json", JSON.stringify(existingNote))
+    res.json(existingNote);
+});
+
+
+app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
