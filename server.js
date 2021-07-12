@@ -2,7 +2,7 @@
 const path = require("path");
 const express = require('express');
 const fs = require('fs');
-const db = require('./db/db.json');
+const exampleNote = require('./db/db.json');
 const { v4: uuidv4 } = require('uuid');
 const { stringify } = require("querystring");
 uuidv4();
@@ -38,13 +38,20 @@ app.get('*', (req, res) => res.sendFile(path.join(__dirname, './public/index.htm
 //Get note from db file
 
 app.post('/api/notes', (req, res) => {
-    const existingNote = JSON.parse(fs.readFileSync ("./dib/db.json"));
+    const exampleNote = JSON.parse(fs.readFileSync ("./db/db.json"));
     const newNote = req.body;
     newNote.id = uuidv4();
-    existingNote.push(newNote);
-    fs.writeFileSync("./db/db.json", JSON.stringify(existingNote))
-    res.json(existingNote);
+    exampleNote.push(newNote);
+    console.log(newNote);
+    console.log(newNote.id);
+    fs.writeFileSync("./db/db.json", JSON.stringify(exampleNote))
+    res.json(exampleNote);
 });
 
+// app.delete('/api/notes', (req, res) => {
+//     const existingNote = req.params.id;
+//     fs.writeFileSync("./db/db.json", JSON.stringify(deleteNote))
+//     res.json(existingNote);
+// });
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
