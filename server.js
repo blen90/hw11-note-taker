@@ -15,21 +15,31 @@ app.use(express.json());
 
 app.use(express.static('./public'));
 
+
 // ROUTES GET METHOD
 
-//Route to index.html file
+//EXAMPLE RESTAURANT EXERVISE
+// app.get('/reserve', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../public/reserve.html'));
+//   }); 
+
+
+// //Route to index.html file
 app.get('/', (req, res) => { 
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
+
  //Route to notes.html file
 app.get('/notes', (req, res) => { 
+    // console.log(req);
+    // console.log(res);
     res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
 //Route to db file
 app.get('api/notes', (req, res) => { 
-    res.sendFile(path.join(__dirname, "./db/db.json"));
+    res.sendFile(path.join(__dirname, './db/db.json'));
 });
 
 //Route to Html file
@@ -38,12 +48,13 @@ app.get('*', (req, res) => {
 });
 
 
-//POST MEHTHOD
+//POST METHOD
 app.post('/api/notes', (req, res) => {
 
-    const existingNote = JSON.parse(fs.readFileSync ("./db/db.json"));
+    
     const newEntry = req.body;
-    newEntry.id = uuidv4();
+    req.body.id = uuidv4();
+    
     
     console.log(newEntry);
     console.log(newEntry.id);
@@ -52,25 +63,26 @@ app.post('/api/notes', (req, res) => {
     // PUSH newEntry to existingNote
     existingNote.push(newEntry);
 
+    // const existingNote = JSON.parse(fs.readFileSync ("./db/db.json"));
     
     fs.writeFileSync("./db/db.json", JSON.stringify(existingNote));
     res.json(existingNote);
 });
 
-app.delete('/api/notes/:id', (req,res) => {
-    const { id } = req.params.id;
+// app.delete('/api/notes/:id', (req,res) => {
+//     const { id } = req.params.id;
  
-    const delNote = existingNote.find(existingNote => existingNote.id === id)
-    if(delNote) {
-         existingNote = existingNote.filter(existingNote => existingNote.id =! id)
-    }else {
+//     const delNote = existingNote.find(existingNote => existingNote.id === id)
+//     if(delNote) {
+//          existingNote = existingNote.filter(existingNote => existingNote.id =! id)
+//     }else {
  
-    }
-    res.status(404).json({message: "Note doesn't exist"});
+//     }
+//     res.status(404).json({message: "Note doesn't exist"});
  
-    fs.writeFileSync("./db/db.json", JSON.stringify(delNote));
-     res.json(delNote);
- });
+//     fs.writeFileSync("./db/db.json", JSON.stringify(delNote));
+//      res.json(delNote);
+//  });
  
 
 
