@@ -36,6 +36,11 @@ app.get('/api/notes', (req, res) => {
     res.json(dbNotes);
 });
 
+//Route to Html file
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
 //POST METHOD
 app.post('/api/notes', (req, res) => {
     console.log("DATABASE ARRAY WE PUSHIN TO", dbNotes);
@@ -69,10 +74,7 @@ app.delete('/api/notes/:id', (req, res) => {
 });
 
 
-//Route to Html file
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
-});
+
 
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
