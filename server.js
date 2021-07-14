@@ -5,8 +5,6 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 var dbNotes = require('./db/db.json');
 
-//https://git.heroku.com/atitlan-note-taker.git 
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
