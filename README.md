@@ -28,6 +28,7 @@ The note shows the title, the body and if the user clicks on the save button it 
 In this homework my task was to create the server part of the app to make it work and bring all the docs together so the app runs. I also had to deploy it on Heroku.
 
 This app allows you to add notes, to render the notes that you have created back to the right side of the page and to delete the notes that you want to delete.
+
 ---
 ## Criteria
 
