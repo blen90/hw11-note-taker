@@ -2,7 +2,7 @@
 
 ## Screenshot of Note Taker
 
-![Note Taker](./note-taker.jpg)
+![Note Taker](./screenshot/demo-screenshot.jpg)
 
 ---
 ## Demo of the app
@@ -10,11 +10,11 @@
 To run the app you will need to add the following command to the terminal
 
 ```
-node index.js
+node server.js
 ```
 (Click on the image below to be redirected to the Youtube demo video)
 
-[![Note taker](./demo-screenshot.jpg)](https://)
+[![Note taker](./screenshot/demo-screenshot.jpg)](https://youtu.be/zEp5UcgbMlo)
 
 ---
 ## My task
@@ -27,6 +27,7 @@ The note shows the title, the body and if the user clicks on the save button it 
 
 In this homework my task was to create the server part of the app to make it work and bring all the docs together so the app runs. I also had to deploy it on Heroku.
 
+This app allows you to add notes, to render the notes that you have created back to the right side of the page and to delete the notes that you want to delete.
 ---
 ## Criteria
 
