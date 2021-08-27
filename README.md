@@ -1,4 +1,4 @@
-# hw11-note-taker
+# Note Taker
 
 ## Link to deployed App in Heroku
 
